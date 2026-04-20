@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Cyber Simulator</h1>
+
+<div class="card">
+
+<p>You receive an email asking for your password. What type of attack is this?</p>
+
+<form method="POST">
+<input type="text" name="answer" placeholder="Your answer">
+<button type="submit">Submit</button>
+</form>
+
+{% if result %}
+<p>{{ result }}</p>
+{% endif %}
+
+</div>
+
+{% endblock %}

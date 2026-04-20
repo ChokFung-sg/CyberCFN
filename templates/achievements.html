@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Achievements</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+{% include "sidebar.html" %}
+
+<div class="main">
+
+<h1>Achievements</h1>
+
+<div class="card">
+
+<ul>
+{% for a in data %}
+<li>{{ a[0] }}</li>
+{% endfor %}
+</ul>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

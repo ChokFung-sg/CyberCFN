@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+{% include "sidebar.html" %}
+
+<div class="main">
+
+<h1>Profile</h1>
+
+<div class="card">
+
+<p><b>Username:</b> {{ user[0] }}</p>
+<p><b>XP:</b> {{ user[1] }}</p>
+<p><b>Lessons Completed:</b> {{ completed }}</p>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

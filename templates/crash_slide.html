@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Day {{ day }}</h1>
+
+<div class="card">
+<p>{{ content }}</p>
+</div>
+
+<a href="/crash/{{ day }}/{{ slide + 1 }}"><button>Next</button></a>
+
+{% endblock %}

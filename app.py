@@ -32,6 +32,11 @@ init_db()
 
 import os
 
+DB_PATH = "database.db"
+
+def get_db():
+    return sqlite3.connect(DB_PATH)
+
 app = Flask(__name__)
 app.secret_key = "secretkey"
 

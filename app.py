@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, session
-
 import sqlite3
+import os
+
+# ================= DATABASE =================
+DB_PATH = "database.db"
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
@@ -28,24 +31,14 @@ def init_db():
     conn.commit()
     conn.close()
 
-init_db()
-
-import os
-
-DB_PATH = "database.db"
-
 def get_db():
     return sqlite3.connect(DB_PATH)
+
+# 🔥 INIT AFTER DB_PATH EXISTS
+init_db()
 
 app = Flask(__name__)
 app.secret_key = "secretkey"
-
-# ================= DATABASE =================
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = "database.db"
-
-def get_db():
-    return sqlite3.connect(DB_PATH)
 
 
 # ================= HOME =================
@@ -92,6 +85,7 @@ def auth():
             return "Invalid login"
 
     return render_template("auth.html")
+
 
 @app.route("/welcome")
 def welcome():
@@ -150,7 +144,7 @@ def courses():
     return render_template("courses.html")
 
 
-# ================= CRASH COURSE (FIXED) =================
+# ================= CRASH COURSE =================
 @app.route("/crash-course")
 def crash_course():
     return redirect("/course/cyber")
@@ -162,7 +156,7 @@ def course(lang):
     return render_template("course.html", lang=lang)
 
 
-# ================= LESSON SLIDES (CRASH) =================
+# ================= LESSON SLIDES =================
 @app.route("/crash/<int:day>/<int:slide>")
 def crash_slide(day, slide):
     if "user_id" not in session:
@@ -279,3 +273,5 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
+
+init_db()
